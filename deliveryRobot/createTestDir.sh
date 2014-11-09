@@ -6,11 +6,11 @@
 PROJECT=`cat /dev/random | env LC_CTYPE=C tr -dc 'A-Z'|head -c 3`
 EPISODE=`cat /dev/random | env LC_CTYPE=C tr -dc '0-9A-Z'|head -c 3`
 SEQUENCE=`cat /dev/random | env LC_CTYPE=C tr -dc '0-9'|head -c 3`
-VERSION=`echo -n 0;cat /dev/random | env LC_CTYPE=C tr -dc '0-9'|head -c 1`
+VERSION=`echo -n 00;cat /dev/random | env LC_CTYPE=C tr -dc '0-9'|head -c 1`
 SHOT=`cat /dev/random | env LC_CTYPE=C tr -dc '0-9'|head -c 3;echo 0`
 SHOTLONG=$EPISODE-$SEQUENCE-$SHOT
 
-DIR="./test/$PROJECT/$EPISODE/$SEQUENCE/$SHOTLONG/Comp/publish/renders/$SHOTLONG_Comp_$VERSION/"
+DIR="./test/$PROJECT/$EPISODE/$SEQUENCE/$SHOTLONG/Comp/publish/renders/${SHOTLONG}_Comp_${VERSION}/"
 
 echo "making $DIR"
 mkdir -p $DIR
