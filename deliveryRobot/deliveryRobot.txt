@@ -14,7 +14,45 @@ eg.
                                                                                          ..
                                                                                          001-abc-030_Comp_v001.0050.dpx
                                                                                          001-abc-030_Comp_v001.0051.dpx
-                                                                                    
+
+then a new structure of symlinks is where the scanner watches
+
+/project/deliveries/<userA>/ --> /<userZ>/to_mvrcks/<project>/
+
+
+ROOTDIR = '/project/deliveries/
+
+scan for a new directory with the following structure
+
+ROOTDIR/<user>/<shot>/<episode>/<sequence>/<step>/publish>/renders/<version>
+if dir is found then
+    spawn anothe thread as we don't want to hold up the scanning
+    class watchdir
+        get shot name, length, task, artist from shotgun
+        if no shotname exit and email someone
+        scan dir for files
+        while no_of_files == length && count == 1 
+        if no of files == length then
+            publih files into shotgun (which should also copy to project)
+            exit
+        if after a certain period ( eg 1/2 hour) files don't equal length then
+            email someone
+        if after 3hours files don't equal length then
+            email someone and exit
+
+
+
+
+
+
+
+--------------------------
+>>>> I think this is wrong and over complicated
+
+class dirscan:
+    '''Scan directory for additional directories and spawn another dirscan if a new dir is found'''
+
+ROOT = './testdir/'
 
 Watch <user>/to_mvrcks/msw   for a new directory (episode)
     if new dir is found then watch in that dir for a new directory (sequence)

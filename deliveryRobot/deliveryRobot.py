@@ -3,7 +3,8 @@
 import os
 
 #ROOT_DIRECTORY = '/project/deliveries/'
-ROOT_DIRECTORY = './test/'
+ROOT_DIRECTORY = './test'
+SEARCH_TEMPLATE = '/POJECT/EPISODE/SEQUENCE/SHOT/Comp/publish/render/VERSION'
 
 # scan for a new directory with the following structure
 # ROOTDIR/<user>/<shot>/<episode>/<sequence>/<step>/publish>/renders/<version>
@@ -35,12 +36,23 @@ class scanRoot:
     Scan the root directory for new directories and spawn a directory watcher 
     when a new directory matching the required structure appears
     '''
+
     # traverse root directory, and list directories as dirs and files as files
     for root, dirs, files in os.walk(ROOT_DIRECTORY):
         path = root.split('/')
-#        print (len(path) - 1) *'---' , os.path.basename(root)       
+
+        template = (ROOT_DIRECTORY + SEARCH_TEMPLATE).split('/')
+        print "path: %s, template: %s ", (path),  (template)
+        if len(template) ==  len(path):
+            print "got one"
+
+        print (len(path) - 1) *'---' , os.path.basename(root)       
 #        for file in files:
 #            print len(path)*'---', file
+
+
+
+
 
 if __name__ == "__main__":
     scanRoot()
