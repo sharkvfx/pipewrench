@@ -1,0 +1,33 @@
+
+Need to define the delivery directory structure for each user:
+
+/<user>/to_mvrcks/<project>/<shot>/<version>/
+
+OR
+
+should it match shotgun structure (which should make more sense)
+
+/<user>/to_mvrcks/<project>/<episode>/<sequence>/<shot>/<step>/publish/renders/<version>/...files...
+eg.
+/<user>/to_mvrcks/msw/001/001-abc/001-abc-030/Comp/publish/renders/001-abc-030_Comp_v001/001-abc-030_Comp_v001.0001.dpx
+                                                                                         001-abc-030_Comp_v001.0002.dpx
+                                                                                         ..
+                                                                                         001-abc-030_Comp_v001.0050.dpx
+                                                                                         001-abc-030_Comp_v001.0051.dpx
+                                                                                    
+
+Watch <user>/to_mvrcks/msw   for a new directory (episode)
+    if new dir is found then watch in that dir for a new directory (sequence)
+        if new dir is found then watch in that dir for a new directory (shot)
+            if new dir is found then watch in ./Comp/publish/renders/ for a new directory (version)
+                if new iversion dir is found then 
+                    get shot no and frames epected from Shotgun
+                    watch in ./Comp/publish/renders/<version>  for  new files (version)
+                    get file names and file count
+                    once file count == shotgun frames publish shot to shotgun
+                    exit
+                exit
+            exit
+        exit
+    exit
+
